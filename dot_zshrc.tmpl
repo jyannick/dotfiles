@@ -73,7 +73,16 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+
+{{ if eq .chezmoi.os "linux" }}
+    {{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+# WSL OpenSUSE has issues with tmux on startup,
+# so we disable autostart, and create an alias to help with first tmux run after WSL startup.
+alias tmux_wsl="sudo systemd-tmpfiles --create && tmux"
+    {{ else }}
 ZSH_TMUX_AUTOSTART="true"
+    {{ end }}
+{{ end }}
 
 # Which plugins would you like to load?
 # Standard plugins can be found in $ZSH/plugins/
