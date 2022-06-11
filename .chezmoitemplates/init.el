@@ -1,4 +1,7 @@
-(tool-bar-mode 0)
+(if (display-graphic-p)
+    (progn
+      (tool-bar-mode -1)
+      (scroll-bar-mode -1)))
 (set-frame-font "Fira Code 12" nil t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 

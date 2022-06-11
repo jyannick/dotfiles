@@ -134,7 +134,14 @@ alias lt="exa --icons --git --long --sort=modified"
 alias lw="exa --icons --git --long --sort=size"
 alias yo="terminal-parrot -loops 3"
 
-e() { command emacs "$@" & }
+e() {
+    if [ $DISPLAY ]
+    then
+	command emacs "$@" &
+    else
+	command emacs "$@"
+    fi
+}
 
 eval "$(thefuck --alias)"
 eval "$(thefuck --alias si)"
