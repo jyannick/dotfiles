@@ -4,3 +4,14 @@ LICENSE
 
 ### Emacs ###
 *~
+
+#####################################################################
+### Handle different locations of dotfiles for different machines ###
+#####################################################################
+{{ if ne .chezmoi.os "linux" }}
+.emacs.d/*
+.zshrc
+{{ end }}
+{{ if ne .chezmoi.os "windows" }}
+AppData/*
+{{ end }}
