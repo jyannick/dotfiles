@@ -5,8 +5,11 @@
 (set-frame-font "Fira Code 12" nil t)
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
-
 (require 'modus-themes)
+
+(require 'ido)
+(ido-mode t)
+
 
 ;; Add all your customizations prior to loading the themes
 (setq modus-themes-italic-constructs t
