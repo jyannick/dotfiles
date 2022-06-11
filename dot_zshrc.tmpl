@@ -122,8 +122,9 @@ alias ll="exa --icons --git --long"
 alias ld="exa --icons --git --tree --level=2"
 alias lt="exa --icons --git --long --sort=modified"
 alias lw="exa --icons --git --long --sort=size"
-alias e="emacs"
 alias yo="terminal-parrot -loops 3"
+
+e() { command emacs "$@" & }
 
 {{- if eq .chezmoi.hostname "kalish" }}
 alias bat="batcat"
