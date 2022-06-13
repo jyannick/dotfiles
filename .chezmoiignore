@@ -9,7 +9,6 @@ LICENSE
 ### Handle different locations of dotfiles for different machines ###
 #####################################################################
 {{ if ne .chezmoi.os "linux" }}
-.emacs.d/*
 .zshrc
 .tmux.conf.local
 .p10k.zsh
