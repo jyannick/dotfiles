@@ -11,6 +11,8 @@ LICENSE
 {{ if ne .chezmoi.os "linux" }}
 .emacs.d/*
 .zshrc
+.tmux.conf.local
+.p10k.zsh
 {{ end }}
 {{ if ne .chezmoi.os "windows" }}
 AppData/*
