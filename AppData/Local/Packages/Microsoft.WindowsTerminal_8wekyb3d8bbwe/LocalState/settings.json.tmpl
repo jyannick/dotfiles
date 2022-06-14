@@ -6,6 +6,14 @@
         {
             "command": 
             {
+                "action": "splitPane",
+                "split": "right"
+            },
+            "keys": "ctrl+shift+\u00f9"
+        },
+        {
+            "command": 
+            {
                 "action": "copy",
                 "singleLine": false
             },
@@ -20,6 +28,14 @@
             "keys": "win+sc(41)"
         },
         {
+            "command": "unbound",
+            "keys": "alt+shift+6"
+        },
+        {
+            "command": "unbound",
+            "keys": "ctrl+8"
+        },
+        {
             "command": "find",
             "keys": "ctrl+shift+f"
         },
@@ -31,6 +47,21 @@
                 "splitMode": "duplicate"
             },
             "keys": "alt+shift+d"
+        },
+        {
+            "command": 
+            {
+                "action": "closeTab"
+            },
+            "keys": "ctrl+w"
+        },
+        {
+            "command": 
+            {
+                "action": "splitPane",
+                "split": "down"
+            },
+            "keys": "ctrl+shift+6"
         },
 {{- if eq .chezmoi.hostname "uriel" }}
         {
@@ -55,6 +86,7 @@
     "copyOnSelect": true,
 {{- if eq .chezmoi.hostname "uriel" }}
     "defaultProfile": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
+    "language": "en-US",
 {{- else }}
     "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
 {{- end }}
