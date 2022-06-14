@@ -8,11 +8,15 @@ LICENSE
 #####################################################################
 ### Handle different locations of dotfiles for different machines ###
 #####################################################################
+
 {{ if ne .chezmoi.os "linux" }}
 .zshrc
 .tmux.conf.local
 .p10k.zsh
+.emacs.d/*
 {{ end }}
+
 {{ if ne .chezmoi.os "windows" }}
 AppData/*
+.bashrc # only used for git-bash on windows
 {{ end }}
