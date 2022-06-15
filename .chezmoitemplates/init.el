@@ -1,8 +1,13 @@
+
 (if (display-graphic-p)
     (progn
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
+{{- if eq .chezmoi.hostname "uriel" }}
 (set-frame-font "Fira Code 12" nil t)
+{{- else }}
+(set-frame-font "Lucida Console 12" nil t)
+{{- end }}
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
 (require 'modus-themes)
