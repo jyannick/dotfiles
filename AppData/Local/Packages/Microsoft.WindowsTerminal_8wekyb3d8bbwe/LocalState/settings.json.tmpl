@@ -88,7 +88,7 @@
     "defaultProfile": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
     "language": "en-US",
 {{- else }}
-    "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+    "defaultProfile": "{52e17c82-e9cd-4cc0-9338-1237ccb975d7}",
 {{- end }}
     "launchMode": "maximized",
     "minimizeToNotificationArea": true,
@@ -99,25 +99,35 @@
             "colorScheme": "Campbell",
             "font": 
             {
+{{- if eq .chezmoi.hostname "uriel" }}	    
                 "face": "MesloLGS NF",
+{{- end }}
                 "size": 12
             }
         },
         "list": 
         [
+{{- if eq .chezmoi.hostname "uriel" }}        
             {
                 "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
                 "hidden": false,
                 "name": "Git Bash",
                 "source": "Git"
             },
-{{- if eq .chezmoi.hostname "uriel" }}        
             {
                 "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
                 "hidden": false,
                 "name": "openSUSE-Tumbleweed",
                 "source": "Windows.Terminal.Wsl",
                 "startingDirectory": "/mnt/c/Users/Nnexx/"
+            },
+{{- else }}
+            {
+                "commandline": "C:\\Program Files\\Git\\bin\\bash.exe --login -i",
+                "guid": "{52e17c82-e9cd-4cc0-9338-1237ccb975d7}",
+                "hidden": false,
+                "name": "git-bash",
+                "startingDirectory": "%USERPROFILE%"
             },
 {{- end }}
             {
