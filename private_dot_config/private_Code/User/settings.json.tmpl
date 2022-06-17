@@ -1,0 +1,18 @@
+{
+    "workbench.colorTheme": "Default Dark+",
+    "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "terminal.integrated.fontFamily": "MesloLGS NF",
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "editor.formatOnSave": true,
+    "terminal.integrated.cwd": "${workspaceFolder}",
+    "terminal.integrated.defaultProfile.{{ .chezmoi.os }}": "tmux",
+    "terminal.integrated.profiles.{{ .chezmoi.os }}": {
+        "tmux": {
+            "path": "tmux",
+            "icon": "terminal-tmux",
+            "args": ["new-session", "-A", "-s", "vscode"]
+        }
+    },
+}
