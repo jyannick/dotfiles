@@ -3,7 +3,7 @@
     (progn
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
-{{- if eq .chezmoi.hostname "uriel" }}
+{{ if .custom_fonts }}
 (set-frame-font "Fira Code 12" nil t)
 {{- else }}
 (set-frame-font "Lucida Console 12" nil t)

@@ -99,9 +99,7 @@
             "colorScheme": "Campbell",
             "font": 
             {
-{{- if eq .chezmoi.hostname "uriel" }}	    
-                "face": "MesloLGS NF",
-{{- end }}
+	        {{ if .custom_fonts }}"face": "MesloLGS NF",{{- end }}
                 "size": 12
             }
         },

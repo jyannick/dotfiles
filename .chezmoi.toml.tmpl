@@ -5,7 +5,16 @@
 {{-   $email = promptString "email" -}}
 {{- end -}}
 
+{{- $custom_fonts := "" -}}
+{{- if hasKey . "custom_fonts" -}}
+{{-   $custom_fonts = .custom_fonts -}}
+{{- else -}}
+{{-   $custom_fonts = promptString "use custom_fonts (true/false)" -}}
+{{- end -}}
+
 [data]
     email = {{ $email | quote }}
+    custom_fonts = {{ $custom_fonts }}
 [merge]
     command = "meld"
+
