@@ -1,1 +1,2 @@
 alias e="env -u HOME emacs $*"
+alias emacs="env -u HOME emacs $*"
