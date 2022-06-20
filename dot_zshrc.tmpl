@@ -161,3 +161,5 @@ eval "$(thefuck --alias si)"
 {{- if eq .chezmoi.hostname "kalish" }}
 alias bat="batcat"
 {{- end }}
+
+bindkey "$terminfo[kcuu1]" fzf-history-widget
