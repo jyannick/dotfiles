@@ -13,7 +13,7 @@ LICENSE
 .zshrc
 .tmux.conf.local
 .p10k.zsh
-.emacs.d/*
+.config/emacs
 .config/Code
 {{ end }}
 
