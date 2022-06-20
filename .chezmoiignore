@@ -18,6 +18,6 @@ LICENSE
 {{ end }}
 
 {{ if ne .chezmoi.os "windows" }}
-AppData/*
+AppData
 .bashrc # only used for git-bash on windows
 {{ end }}
