@@ -9,7 +9,7 @@
 {{- if hasKey . "custom_fonts" -}}
 {{-   $custom_fonts = .custom_fonts -}}
 {{- else -}}
-{{-   $custom_fonts = promptString "use custom_fonts (true/false)" -}}
+{{-   $custom_fonts = promptBool "use custom_fonts" -}}
 {{- end -}}
 
 [data]
