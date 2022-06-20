@@ -139,12 +139,11 @@ eval "$(pyenv init --path)"
 {{- end }}
 
 # aliases Yannick
-alias l="exa --icons --git"
-alias ll="exa --icons --git --long"
-alias ld="exa --icons --git --tree --level=2"
-alias lt="exa --icons --git --long --sort=modified"
-alias lw="exa --icons --git --long --sort=size"
-alias yo="terminal-parrot -loops 3"
+alias l="exa --icons --git" # list files from current directory
+alias ll="exa --icons --git --long" # list details of the files from current directory
+alias ld="exa --icons --git --tree --level=2" # tree view of current directory
+alias lt="exa --icons --git --long --sort=modified" # list files by date of modification
+alias lw="exa --icons --git --long --sort=size"  # list files by size
 
 e() {
     if [ $DISPLAY ]
@@ -155,8 +154,8 @@ e() {
     fi
 }
 
-eval "$(thefuck --alias)"
-eval "$(thefuck --alias si)"
+eval "$(thefuck --alias)" # fuck, fix my previous command
+eval "$(thefuck --alias si)" # fuck, fix my previous command
 
 {{- if eq .chezmoi.hostname "kalish" }}
 alias bat="batcat"
