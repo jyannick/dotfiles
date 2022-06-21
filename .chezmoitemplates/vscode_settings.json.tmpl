@@ -31,15 +31,15 @@
     "jupyter.askForKernelRestart": false,
     "python.linting.mypyEnabled": true,
 
-{{/* various stuff */}}
-     "indentRainbow.excludedLanguages": [
-         "yaml"
-     ]
-
 {{/* machine-specific extra stuff */}}
 {{ $vscode_settings_extras := (joinPath .chezmoi.homeDir ".config" "chezmoi" "vscode_settings_extras.json") }}
 {{ if stat $vscode_settings_extras }}
    {{ include $vscode_settings_extras }}
 {{ end }}
+
+{{/* various stuff */}}
+     "indentRainbow.excludedLanguages": [
+         "yaml"
+     ]
 
 }
