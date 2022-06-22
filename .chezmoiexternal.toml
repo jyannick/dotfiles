@@ -1,0 +1,9 @@
+{{ if eq .chezmoi.os "linux" }}
+
+[".oh-my-zsh/custom/plugins/fzf-tab"]
+    type = "git-repo"
+    url = "https://github.com/Aloxaf/fzf-tab"
+    refreshPeriod = "168h"
+
+{{ end }}
+
