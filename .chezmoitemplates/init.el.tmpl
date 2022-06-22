@@ -3,6 +3,8 @@
     (progn
       (tool-bar-mode -1)
       (scroll-bar-mode -1)))
+(add-hook 'prog-mode-hook 'display-line-numbers-mode)
+
 {{ if .custom_fonts }}
 (set-frame-font "Fira Code 12" nil t)
 {{- else }}
