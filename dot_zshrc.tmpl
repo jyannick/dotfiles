@@ -144,6 +144,11 @@ alias ll="exa --icons --git --long" # list details of the files from current dir
 alias ld="exa --icons --git --tree --level=2" # tree view of current directory
 alias lt="exa --icons --git --long --sort=modified" # list files by date of modification
 alias lw="exa --icons --git --long --sort=size"  # list files by size
+zut() {
+      print -z $(grep '' -H ~/.local/share/zut/*.txt | sed "s|${HOME}/.local/share/zut/||g" | sed s'|.txt:|\t\t|g' | sed 's| => |\t\t|g' | fzf --height 40% | awk -F'\t\t' '{print $2}')
+}
+zle -N _zut_widget zut
+bindkey "^H" _zut_widget
 
 e() {
     if [ $DISPLAY ]

@@ -1,0 +1,4 @@
+Alt-C => change directory with fzf and preview
+Ctrl-T => select file from current directory with fzf and preview
+Ctrl-R => browse command history with fzf
+Ctrl-H => show this help (and execute selection if applicable)
