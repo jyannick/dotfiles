@@ -2,6 +2,7 @@
 import json
 import pathlib
 import os
+import re
 
 ZUT_DIRECTORY = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 
@@ -30,10 +31,30 @@ def update_git():
         )
 
 
+def update_zsh():
+    print(" - zsh...")
+    with open(pathlib.Path("~/.zshrc").expanduser(), "r") as f:
+        zshrc = f.read()
+        aliases = re.findall(
+            r"^alias (?P<alias>.*?)=(?P<command>.*) # (?P<comment>.*)",
+            zshrc,
+            re.MULTILINE,
+        )
+        functions = re.findall(
+            r"^(?P<name>.*?)\(\) \{ # (?P<comment>.*)",
+            zshrc,
+            re.MULTILINE,
+        )
+    with open(ZUT_DIRECTORY / "zsh.txt", "w") as f:
+        f.writelines([f"{alias[0]} => {alias[2]}\n" for alias in aliases])
+        f.writelines([f"{function[0]} => {function[1]}\n" for function in functions])
+
+
 def main():
     print("Updating zut cheatsheets...")
     update_vscode()
     update_git()
+    update_zsh()
     print("Cheatsheets up to date !")
     print("Use alias 'zut' or press Ctrl-H from terminal to search cheatsheets")
 
