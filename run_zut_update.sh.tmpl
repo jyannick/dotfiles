@@ -1,0 +1,5 @@
+#! /bin/sh
+
+{{ if eq .chezmoi.os "linux" }}
+~/.local/share/zut/zut_update.py
+{{ end }}
