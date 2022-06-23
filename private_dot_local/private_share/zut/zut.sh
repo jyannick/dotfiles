@@ -1,14 +1,15 @@
 #! /bin/zsh
 
 zut_dir=${0:a:h}
-separator='\t\t'
+separator='µ' # single character, must not appear in the txt files
 
 _zut() {
     grep '' -H ${zut_dir}/*.txt \
-	| sed "s|${zut_dir}/||g"\
-	| sed s"|.txt:|${separator}|g"\
-	| sed "s| => |${separator}|g"\
-	| fzf --height 40%\
+	| sed "s|${zut_dir}/||g" \
+	| sed s"|.txt:|${separator}|g" \
+	| sed "s| => |${separator}|g" \
+    | column --table --separator ${separator} --table-columns-limit 3 \
+	| fzf --height 40% \
 	| awk -F"${separator}" '{print $2}'
 }
 

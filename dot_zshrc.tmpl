@@ -138,14 +138,16 @@ eval "$(pyenv init --path)"
 # end pyenv
 {{- end }}
 
+# zut => search in the zut cheatsheet
+# <Ctrl-H> => search in the zut cheatsheet
 source ${HOME}/.local/share/zut/zut.sh
 
 # aliases Yannick
-alias l="exa --icons --git" # list files from current directory
-alias ll="exa --icons --git --long" # list details of the files from current directory
-alias ld="exa --icons --git --tree --level=2" # tree view of current directory
-alias lt="exa --icons --git --long --sort=modified" # list files by date of modification
-alias lw="exa --icons --git --long --sort=size"  # list files by size
+alias l="exa --icons --git" # list files from current directory with 'exa'
+alias ll="exa --icons --git --long" # list details of the files from current directory with 'exa'
+alias ld="exa --icons --git --tree --level=2" # tree view of current directory with 'exa'
+alias lt="exa --icons --git --long --sort=modified" # list files by date of modification with 'exa'
+alias lw="exa --icons --git --long --sort=size"  # list files by size with 'exa'
 
 e() { # emacs
     if [ $DISPLAY ]
@@ -159,6 +161,7 @@ e() { # emacs
 eval "$(thefuck --alias)" # fuck, fix my previous command
 eval "$(thefuck --alias si)" # fuck, fix my previous command
 
+# bat => 'cat' on steroids
 {{ $bat := "" }}
 {{- if eq .chezmoi.hostname "kalish" }}
 {{ $bat = "batcat"}}
@@ -168,6 +171,6 @@ alias bat={{$bat}}
 {{- end }}
 
 # FZF-related customizations
-bindkey "$terminfo[kcuu1]" fzf-history-widget
+bindkey "$terminfo[kcuu1]" fzf-history-widget # <Up-arrow> => search command history with fzf
 export FZF_CTRL_T_OPTS="--preview '{{$bat}} --style=numbers --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'exa --icons --git --tree --level=2 {} | head -200'"

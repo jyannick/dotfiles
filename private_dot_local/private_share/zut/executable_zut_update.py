@@ -7,6 +7,12 @@ import re
 ZUT_DIRECTORY = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 
 
+def format_line(shortcut: str, meaning: str, is_keyboard_shortcut: bool = False):
+    if is_keyboard_shortcut:
+        shortcut = f"<{shortcut}>"
+    return f"{shortcut} => {meaning}\n"
+
+
 def update_vscode():
     print(" - VSCode...")
     with open(
@@ -15,7 +21,12 @@ def update_vscode():
         shortcuts = json.loads("\n".join(f.readlines()[1:]))
     with open(ZUT_DIRECTORY / "vscode.txt", "w") as f:
         f.writelines(
-            [f"{shortcut['key']} => {shortcut['command']}\n" for shortcut in shortcuts]
+            [
+                format_line(
+                    shortcut["key"], shortcut["command"], is_keyboard_shortcut=True
+                )
+                for shortcut in shortcuts
+            ]
         )
 
 
@@ -25,7 +36,10 @@ def update_git():
     with open(ZUT_DIRECTORY / "git.txt", "w") as f:
         f.writelines(
             [
-                f"git {alias.split()[0].replace('alias.', '')} => git {' '.join(alias.split()[1:])}\n"
+                format_line(
+                    f"git {alias.split()[0].replace('alias.', '')}",
+                    f"git {' '.join(alias.split()[1:])}",
+                )
                 for alias in git_config_output
             ]
         )
@@ -36,7 +50,7 @@ def update_zsh():
     with open(pathlib.Path("~/.zshrc").expanduser(), "r") as f:
         zshrc = f.read()
         aliases = re.findall(
-            r"^alias (?P<alias>.*?)=(?P<command>.*) # (?P<comment>.*)",
+            r"^alias (?P<name>.*?)=.* # (?P<comment>.*)",
             zshrc,
             re.MULTILINE,
         )
@@ -45,9 +59,18 @@ def update_zsh():
             zshrc,
             re.MULTILINE,
         )
+        zut_comments = re.findall(
+            r"# (?P<name>.*?) => (?P<comment>.*)$",
+            zshrc,
+            re.MULTILINE,
+        )
     with open(ZUT_DIRECTORY / "zsh.txt", "w") as f:
-        f.writelines([f"{alias[0]} => {alias[2]}\n" for alias in aliases])
-        f.writelines([f"{function[0]} => {function[1]}\n" for function in functions])
+        f.writelines(
+            [
+                format_line(match[0], match[1])
+                for match in aliases + functions + zut_comments
+            ]
+        )
 
 
 def main():
