@@ -18,9 +18,22 @@ def update_vscode():
         )
 
 
+def update_git():
+    print(" - git...")
+    git_config_output = os.popen("git config --get-regexp alias")
+    with open(ZUT_DIRECTORY / "git.txt", "w") as f:
+        f.writelines(
+            [
+                f"git {alias.split()[0].replace('alias.', '')} => git {' '.join(alias.split()[1:])}\n"
+                for alias in git_config_output
+            ]
+        )
+
+
 def main():
     print("Updating zut cheatsheets...")
     update_vscode()
+    update_git()
     print("Cheatsheets up to date !")
     print("Use alias 'zut' or press Ctrl-H from terminal to search cheatsheets")
 
