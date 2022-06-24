@@ -1,9 +1,17 @@
 {{ if eq .chezmoi.os "linux" }}
-
 [".oh-my-zsh/custom/plugins/fzf-tab"]
     type = "git-repo"
     url = "https://github.com/Aloxaf/fzf-tab"
     refreshPeriod = "168h"
-
 {{ end }}
 
+{{ if eq .chezmoi.os "windows" }}
+{{/* only useful for git-bash to get commandline widgets */}}
+{{ $fzfVersion := "0.30.0" }}
+[".local/share/fzf"]
+    type = "archive"
+    url = "https://github.com/junegunn/fzf/archive/refs/tags/{{ $fzfVersion }}.tar.gz"
+    exact = true
+    stripComponents = 1
+    refreshPeriod = "168h"
+{{ end }}

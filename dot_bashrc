@@ -1,3 +1,4 @@
 alias e="env -u HOME emacs $*"
 alias emacs="env -u HOME emacs $*"
 source ${HOME}/.local/share/zut/zut_bash.sh
+source ${HOME}/.local/share/fzf/shell/key-bindings.bash
