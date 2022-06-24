@@ -12,5 +12,8 @@ zut () {
 	| sed "s| => |${intermediary_separator}|g" \
 	| column --table --separator ${intermediary_separator} --output-separator ${display_separator} \
 	| fzf --height 40% \
-	| awk -F"${display_splitter}" '{gsub(/[ \t]+$/, "", $2); gsub(/^[ \t]+/, "", $2); print $2}'
+	| awk -F"${display_splitter}" '{gsub(/[ \t]+$/, "", $2); gsub(/^[ \t]+/, "", $2); print $2}' \
+	| awk '{print "❯ " $0; system($0)}'
 }
+
+bind '"\C-h":"zut\n"'
