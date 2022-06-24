@@ -3,6 +3,7 @@ import json
 import pathlib
 import os
 import re
+import platform
 
 ZUT_DIRECTORY = pathlib.Path(os.path.dirname(os.path.realpath(__file__)))
 
@@ -15,9 +16,8 @@ def format_line(shortcut: str, meaning: str, is_keyboard_shortcut: bool = False)
 
 def update_vscode():
     print(" - VSCode...")
-    with open(
-        pathlib.Path("~/.config/Code/User/keybindings.json").expanduser(), "r"
-    ) as f:
+    path = "~/AppData/Roaming/" if platform.system() == "Windows" else "~/.config/"
+    with open(pathlib.Path(path).expanduser() / "Code/User/keybindings.json", "r") as f:
         shortcuts = json.loads("\n".join(f.readlines()[1:]))
     with open(ZUT_DIRECTORY / "vscode.txt", "w") as f:
         f.writelines(
@@ -46,6 +46,8 @@ def update_git():
 
 
 def update_zsh():
+    if platform.system() == "Windows":
+        return
     print(" - zsh...")
     with open(pathlib.Path("~/.zshrc").expanduser(), "r") as f:
         zshrc = f.read()
@@ -79,7 +81,7 @@ def main():
     update_git()
     update_zsh()
     print("Cheatsheets up to date !")
-    print("Use alias 'zut' or press Ctrl-H from terminal to search cheatsheets")
+    print("Use alias 'zut' in terminal to search cheatsheets")
 
 
 if __name__ == "__main__":
