@@ -1,5 +1,14 @@
 alias e="env -u HOME emacs $*"
 alias emacs="env -u HOME emacs $*"
+
+# zut => search in the zut cheatsheet
+# <Ctrl-H> => search in the zut cheatsheet
 source ${HOME}/.local/share/zut/zut_bash.sh
+
+# <Ctrl-R> => search command history with fzf
+# <Alt-C> => move into directory with fzf
+# <Ctrl-T> => select a directory to use as argument with fzf
 source ${HOME}/.local/share/fzf/shell/key-bindings.bash
-eval "$(jump shell)" # https://github.com/gsamokovarov/jump
+
+# https://github.com/gsamokovarov/jump
+eval "$(jump shell)" # j => jump to a recent directory by fuzzy-searching

@@ -45,28 +45,27 @@ def update_git():
         )
 
 
-def update_zsh():
-    if platform.system() == "Windows":
-        return
-    print(" - zsh...")
-    with open(pathlib.Path("~/.zshrc").expanduser(), "r") as f:
-        zshrc = f.read()
+def update_shell():
+    shell = "bash" if platform.system() == "Windows" else "zsh"
+    print(f" - {shell}...")
+    with open(pathlib.Path(f"~/.{shell}rc").expanduser(), "r") as f:
+        content = f.read()
         aliases = re.findall(
             r"^alias (?P<name>.*?)=.* # (?P<comment>.*)",
-            zshrc,
+            content,
             re.MULTILINE,
         )
         functions = re.findall(
             r"^(?P<name>.*?)\(\) \{ # (?P<comment>.*)",
-            zshrc,
+            content,
             re.MULTILINE,
         )
         zut_comments = re.findall(
             r"# (?P<name>.*?) => (?P<comment>.*)$",
-            zshrc,
+            content,
             re.MULTILINE,
         )
-    with open(ZUT_DIRECTORY / "zsh.txt", "w") as f:
+    with open(ZUT_DIRECTORY / f"{shell}.txt", "w") as f:
         f.writelines(
             [
                 format_line(match[0], match[1])
@@ -79,7 +78,7 @@ def main():
     print("Updating zut cheatsheets...")
     update_vscode()
     update_git()
-    update_zsh()
+    update_shell()
     print("Cheatsheets up to date !")
     print("Use alias 'zut' in terminal to search cheatsheets")
 
