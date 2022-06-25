@@ -138,7 +138,8 @@ eval "$(pyenv init --path)"
 # end pyenv
 {{- end }}
 
-eval "$(jump shell)" # https://github.com/gsamokovarov/jump
+# https://github.com/gsamokovarov/jump
+eval "$(jump shell)" # j => jump to a recent directory by fuzzy-searching
 
 # zut => search in the zut cheatsheet
 # <Ctrl-H> => search in the zut cheatsheet
@@ -173,6 +174,9 @@ alias bat={{$bat}}
 {{- end }}
 
 # FZF-related customizations
+# <Ctrl-R> => search command history with fzf
+# <Alt-C> => move into directory with fzf
+# <Ctrl-T> => select a directory to use as argument with fzf
 bindkey "$terminfo[kcuu1]" fzf-history-widget # <Up-arrow> => search command history with fzf
 export FZF_CTRL_T_OPTS="--preview '{{$bat}} --style=numbers --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'exa --icons --git --tree --level=2 {} | head -200'"
