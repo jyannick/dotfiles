@@ -151,6 +151,18 @@ alias ll="exa --icons --git --long" # list details of the files from current dir
 alias ld="exa --icons --git --tree --level=2" # tree view of current directory with 'exa'
 alias lt="exa --icons --git --long --sort=modified" # list files by date of modification with 'exa'
 alias lw="exa --icons --git --long --sort=size"  # list files by size with 'exa'
+{{ if eq .chezmoi.hostname "kalish" -}}
+update() { # update apt+snap+brew packages
+    echo "\n********* APT *********"
+    sudo apt update
+    sudo apt upgrade
+    echo "\n\n********* SNAP *********"
+    sudo snap refresh
+    echo "\n\n********* BREW *********"
+    brew update
+    brew upgrade
+}
+{{ end -}}
 
 e() { # emacs
     if [ $DISPLAY ]
