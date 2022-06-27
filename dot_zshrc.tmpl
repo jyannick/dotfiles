@@ -163,6 +163,13 @@ update() { # update apt+snap+brew packages
     brew upgrade
 }
 {{ end -}}
+{{ if eq .chezmoi.hostname "uriel" -}}
+update() { # update zypper packages
+    echo "\n********* ZYPPER *********"
+    sudo zypper update
+}
+{{ end -}}
+
 
 e() { # emacs
     if [ $DISPLAY ]
