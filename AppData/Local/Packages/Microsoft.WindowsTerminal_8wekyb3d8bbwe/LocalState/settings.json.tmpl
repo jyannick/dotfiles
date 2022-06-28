@@ -101,7 +101,7 @@
             "font": 
             {
 	        {{ if .custom_fonts }}"face": "MesloLGS NF",{{- end }}
-                "size": 14
+		{{- if eq .chezmoi.hostname "uriel" }}"size": 14{{- end -}}
             }
         },
         "list": 
