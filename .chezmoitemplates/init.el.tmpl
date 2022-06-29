@@ -12,11 +12,12 @@
 {{- end }}
 (add-hook 'window-setup-hook 'toggle-frame-maximized t)
 
-(require 'modus-themes)
-
 (require 'ido)
 (ido-mode t)
 
+{{ if .emacs_up_to_date }} {{/* use modus-themes on emacs 27+ */}}
+
+(require 'modus-themes)
 
 ;; Add all your customizations prior to loading the themes
 (setq modus-themes-italic-constructs t
@@ -31,6 +32,15 @@
 (modus-themes-load-vivendi)
 
 (define-key global-map (kbd "<f5>") #'modus-themes-toggle)
+
+{{ else }} {{/* use ahungry theme as fallback on old emacs versions */}}
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/ahungry-theme-1.10.0/")
+(load-theme 'ahungry t)
+
+{{ end }}
+
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

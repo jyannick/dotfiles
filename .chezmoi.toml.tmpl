@@ -12,9 +12,18 @@
 {{-   $custom_fonts = promptBool "use custom_fonts" -}}
 {{- end -}}
 
+{{- $emacs_up_to_date := "" -}}
+{{- if hasKey . "emacs_up_to_date" -}}
+{{-   $emacs_up_to_date = .emacs_up_to_date -}}
+{{- else -}}
+{{-   $emacs_up_to_date = promptBool "is emacs up-to-date" -}}
+{{- end -}}
+
+
 [data]
     email = {{ $email | quote }}
     custom_fonts = {{ $custom_fonts }}
+    emacs_up_to_date = {{ $emacs_up_to_date }}
 [merge]
     command = "meld"
 

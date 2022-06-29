@@ -1,3 +1,5 @@
+fpath=(~/.local/share/zfunc $fpath) # YJ: to store completions and custom functions
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -90,7 +92,7 @@ ZSH_TMUX_DEFAULT_SESSION_NAME="🏠 default"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git poetry pyenv thefuck sudo fzf zsh-autosuggestions tmux fzf-tab colored-man-pages)
+plugins=(git pyenv thefuck sudo fzf zsh-autosuggestions tmux fzf-tab colored-man-pages)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -151,6 +153,7 @@ alias ll="exa --icons --git --long" # list details of the files from current dir
 alias ld="exa --icons --git --tree --level=2" # tree view of current directory with 'exa'
 alias lt="exa --icons --git --long --sort=modified" # list files by date of modification with 'exa'
 alias lw="exa --icons --git --long --sort=size"  # list files by size with 'exa'
+alias mergenb='git mergetool --tool nbdime' # merge a notebook in git conflict (use filename as argument)
 {{ if eq .chezmoi.hostname "kalish" -}}
 update() { # update apt+snap+brew packages
     echo "\n********* APT *********"
