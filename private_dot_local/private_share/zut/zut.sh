@@ -7,10 +7,10 @@ display_splitter='|' # single character contained in display_separator
 
 _zut() {
     grep '' -H ${zut_dir}/*.txt \
-	| sed "s|${zut_dir}/||g" \
-	| sed s"|.txt:|${intermediary_separator}|g" \
-	| sed "s| => |${intermediary_separator}|g" \
-	| column --table --separator ${intermediary_separator} --output-separator ${display_separator} \
+	| sed "s;${zut_dir}/;;g" \
+	| sed s";.txt:;${intermediary_separator}${display_separator};g" \
+	| sed "s; => ;${intermediary_separator}${display_separator};g" \
+	| column -t -s ${intermediary_separator}\
 	| fzf --height 40% \
 	| awk -F"${display_splitter}" '{gsub(/[ \t]+$/, "", $2); gsub(/^[ \t]+/, "", $2); print $2}'
 }
