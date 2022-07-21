@@ -389,6 +389,9 @@ set -g status-position top
 set -gu prefix2
 unbind C-a
 
+# C-g [copy mode] => exit copy mode
+bind-key    -T copy-mode    C-g                 send-keys -X cancel
+
 # -- tpm -----------------------------------------------------------------------
 
 # while I don't use tpm myself, many people requested official support so here
