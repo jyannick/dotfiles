@@ -3,3 +3,4 @@ C-b Backspace => focus sidebar showing files
 C-b m => toggle mouse mode
 mouse selection => copy selection to middle-click-clipboard
 y (in copy mode) => copy selection to clipboard
+C-S-v => paste from clipboard
