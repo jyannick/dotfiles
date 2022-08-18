@@ -130,6 +130,26 @@ export EDITOR='emacs'
 {{- if eq .chezmoi.hostname "kalish" }}
 # nodenv
 eval "$(nodenv init -)"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/yannick/.local/opt/mambaforge/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/yannick/.local/opt/mambaforge/etc/profile.d/conda.sh" ]; then
+        . "/home/yannick/.local/opt/mambaforge/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/yannick/.local/opt/mambaforge/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+
+if [ -f "/home/yannick/.local/opt/mambaforge/etc/profile.d/mamba.sh" ]; then
+    . "/home/yannick/.local/opt/mambaforge/etc/profile.d/mamba.sh"
+fi
+# <<< conda initialize <<<
+
 {{- end }}
 
 {{- if eq .chezmoi.hostname "uriel" }}
