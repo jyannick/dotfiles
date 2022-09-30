@@ -10,9 +10,7 @@ LICENSE
 #####################################################################
 
 {{ if ne .chezmoi.os "linux" }}
-.zshrc
 .tmux.conf.local
-.p10k.zsh
 .config/emacs
 .config/Code
 {{ end }}
