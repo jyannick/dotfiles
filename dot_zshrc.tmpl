@@ -214,6 +214,11 @@ alias bat={{$bat}}
 {{ $bat = "bat"}}
 {{- end }}
 
+# rich-cli
+alias r="rich -n -g --padding 1 --theme monokai" # show file content using rich-cli
+alias rp="rich -n -g --padding 1 --theme monokai --pager" # navigate file content using rich-cli
+
+
 # FZF-related customizations
 # <Ctrl-R> => search command history with fzf
 # <Alt-C> => move into directory with fzf

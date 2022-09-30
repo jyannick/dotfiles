@@ -12,3 +12,6 @@ source ${HOME}/.local/share/fzf/shell/key-bindings.bash
 
 # https://github.com/gsamokovarov/jump
 eval "$(jump shell)" # j => jump to a recent directory by fuzzy-searching
+
+alias r="rich -n -g --padding 1 --theme monokai $@" # show file content using rich-cli
+alias rp="rich -n -g --padding 1 --theme monokai --pager $@" # navigate file content using rich-cli
