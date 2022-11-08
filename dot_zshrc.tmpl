@@ -225,3 +225,5 @@ alias rp="rich -n -g --padding 1 --theme monokai --pager" # navigate file conten
 # <Ctrl-T> => select a directory to use as argument with fzf
 export FZF_CTRL_T_OPTS="--preview '{{$bat}} --style=numbers --color=always --line-range :500 {}'"
 export FZF_ALT_C_OPTS="--preview 'exa --icons --git --tree --level=2 {} | head -200'"
+
+# note to self: use .zshenv (which is NOT managed by chezmoi) for machine-specific environment variables
