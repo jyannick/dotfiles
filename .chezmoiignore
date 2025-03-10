@@ -1,6 +1,7 @@
 ### Repo ###
 README.md
 LICENSE
+.github/*
 
 ### Emacs ###
 **/*~
