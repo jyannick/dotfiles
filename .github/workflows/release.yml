@@ -1,0 +1,29 @@
+name: Release
+run-name: Release of ${{  github.ref_name }} 📦
+on: [push]
+jobs:
+  Prepare-Package:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Build package
+        run: |
+          cd ${{ github.workspace }} && tar cvf dotfiles.tar.gz .
+
+      - name: Getting git short SHA
+        uses: benjlevesque/short-sha@v3.0
+        id: short-sha
+        with:
+          length: 6
+
+      - name: Create new release for ${{ github.ref }} 🚀
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ env.SHA }}
+          artifacts: ${{ github.workspace }}/dotfiles.tar.gz
+
+      - run: echo "💡 This job's status is ${{ job.status }}."
